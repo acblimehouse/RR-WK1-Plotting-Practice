@@ -4,6 +4,9 @@ DataURL <- "https://d18ky98rnyall9.cloudfront.net/_e143dff6e844c7af8da2a4e71d7c0
 File.Name <- "payments.csv"
 Data.Name <- "Payments.Data"
 setwd(Local.Directory)
+library(data.table)
+library(dplyr)
+library(dtplyr)
 ###
 
 ## Get Data
@@ -13,5 +16,7 @@ if (!file.exists(File.Name)){
 
 ## Load Data
 if (!exists(Data.Name)){
-  Payments.Data <- read.table(file = File.Name, header = TRUE, sep = ",")
+  Payments.Data <- as.data.table(
+      read.table(file = File.Name, header = TRUE, sep = ",", stringsAsFactors = TRUE)
+      )
 }
